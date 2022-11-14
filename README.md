@@ -1,1 +1,3 @@
 # mypebs
+
+sudo ./pebs pid
