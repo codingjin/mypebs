@@ -24,7 +24,7 @@ for tmp in df_address_list:
 	addr = ast.literal_eval(str(tmp))
 	new_addresses.append(addr)
 
-	#if addr>=34186810545 and addr<=34226810545:
+	#if addr>=34107173830 and addr<=34147173830:
 	#	new_addresses.append(addr)
 	#else:
 	#	print(addr, "Not appended")
@@ -37,7 +37,7 @@ print(max_address)
 
 #plt.hist(new_addresses, range=[1.39813468440448e+14, 1.40728425785584e+14], bins=500)
 #plt.hist(new_addresses, range=[139105922211856, 139761282211848], bins=500)
-plt.hist(new_addresses, log=True, range=[min_address, max_address])
+plt.hist(new_addresses, log=True, bins=5000, range=[min_address, max_address])
 
 plt.xlabel('Virtual Address')
 plt.ylabel('Freq')
