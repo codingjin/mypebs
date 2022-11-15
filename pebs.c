@@ -206,7 +206,7 @@ void *pebs_scan_thread(void *) {
 		} // end of loop entity=readdir(dir)
 
 		// repeat times sampling
-		for (uint32_t times=0;times<1024;++times) {
+		for (uint32_t times=0;times<10000;++times) {
 
 		for(uint32_t i=0;i<tcount;++i) {
 			for (uint32_t j=0;j<NPBUFTYPES;++j) {
@@ -232,7 +232,7 @@ void *pebs_scan_thread(void *) {
 							fprintf(fp, "pid=%u tid=%u weight=%llu addr=%p phys_addr=%p\n",
 								ps->pid, ps->tid, ps->weight, (void *)ps->addr, (void *)ps->phys_addr);
 							*/
-							fprintf(fp, "%llu\n", ps->addr);
+							fprintf(fp, "%llu\n", ps->addr >> 12);
 
 						}/*else {
 							printf("Zero Page\n");

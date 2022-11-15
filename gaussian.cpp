@@ -19,22 +19,26 @@ int main() {
     long* r;
     long tmp;
     //long size = 20480000000;
-	long size = 81920000000;
+	long size = 20480000000;
     //long iteration = 500000000;
-    long iteration = 900000000;
+    long iteration = 500000000;
 
     p = (long *)malloc(size*sizeof(long));
 
 	std::cout << getpid() << std::endl;
-	sleep(5);
+	sleep(10);
 
     std::random_device rd{};
     std::mt19937 gen{rd()};
-    std::normal_distribution<> d{40960000000, 4000000000};
+    std::normal_distribution<> d{10240000000, 10000000};
+    //std::normal_distribution<> d{40960000000, 4000000000};
 	//std::normal_distribution<> d{10240000000, 10000000};
     //std::normal_distribution<> d{5120000, 400000};
-    std::cout << &p[0] << std::endl;
-    std::cout << &p[size - 1] << std::endl;
+    //std::cout << &p[0] << std::endl;
+    //std::cout << &p[size - 1] << std::endl;
+
+	printf("page range: %llu %llu\n",((unsigned long long)(&p[0]))>>12,((unsigned long long)(&p[size-1]))>>12);
+
     //std::chrono::time_point<std::chrono::system_clock> start, end;
 
 	auto start = std::chrono::steady_clock::now();
@@ -45,7 +49,7 @@ int main() {
     }
 	
     auto end = std::chrono::steady_clock::now();
-	
+	/*
 	std::cout << "Elapsed time in nanoseconds: "
 	          << chrono::duration_cast<chrono::nanoseconds>(end - start).count()
 			  << " ns" << endl;
@@ -57,7 +61,7 @@ int main() {
 	std::cout << "Elapsed time in milliseconds: "
 	          << chrono::duration_cast<chrono::milliseconds>(end - start).count()
 		      << " ms" << endl;
-
+	*/
 	std::cout << "Elapsed time in seconds: "
 	          << chrono::duration_cast<chrono::seconds>(end - start).count()
 		      << " sec" << endl;

@@ -16,9 +16,14 @@ df_address_list = df_address['Address'].values.tolist()
 #print(df_address_list)
 
 new_addresses = []
-for addr in df_address_list:
-	new_addresses.append(ast.literal_eval(str(addr)))
+for tmp in df_address_list:
+	addr = ast.literal_eval(str(tmp))
+	if addr>=34186810545 and addr<=34226810545:
+		new_addresses.append(addr)
+	#else:
+	#	print(addr, "Not appended")
 print(len(new_addresses))
+
 
 '''
 count = 0
@@ -39,8 +44,9 @@ print(min_address)
 print(max_address)
 
 
-plt.hist(new_addresses, range=[1.39813468440448e+14, 1.40728425785584e+14], bins=500)
+#plt.hist(new_addresses, range=[1.39813468440448e+14, 1.40728425785584e+14], bins=500)
 #plt.hist(new_addresses, range=[139105922211856, 139761282211848], bins=500)
+plt.hist(new_addresses, log=True, bins=500, range=[min_address, max_address])
 
 plt.xlabel('Virtual Address')
 plt.ylabel('Freq')
